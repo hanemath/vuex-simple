@@ -3,14 +3,21 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+//import image1 from '../assets/img/laneige.png'
+
 export const store = new Vuex.Store({
     strict: true,
     state: {
         favorites: [
-            {name:'Laneige', vote: 24, price: 20}, 
-            {name:'Skin2004', vote: 22, price: 19},
+            {   name:'Laneige', 
+                vote: 24, 
+                price: 20, 
+                //image: image1,
+                //image: require('../assets/img/laneige.png')
+            }, 
+            {name:'Skin1004', vote: 22, price: 19},
             {name:'Skinfood', vote: 20, price: 22},
-            {name:'Arirang', vote: 18, price: 28},
+            {name:'Nacific', vote: 18, price: 28},
         ]
     },
     getters: {

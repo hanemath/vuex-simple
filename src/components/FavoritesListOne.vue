@@ -1,5 +1,5 @@
 <template>
-  <div id="favorites-list-one" class="container-fluid">
+  <div id="favorites-list-one" class="container-fluid sale py-2">
     <h2>BRANDS in SALE</h2>
     <div class="row justify-content-center">
         <div class="row col-12 justify-content-center">
@@ -10,6 +10,7 @@
                 </div>
             </div>
         </div>
+        <button class="btn btn-custom" v-on:click="reducePrice(6)">Reduce Price</button>
     </div>
   </div>
 </template>
@@ -24,6 +25,15 @@ export default {
     saleProducts() {
       return this.$store.getters.saleProducts;
     }
+  },
+  methods: {
+    reducePrice: function(amount) {
+      /*this.$store.state.favorites.forEach(favorite => {
+        favorite.price -= 1;
+      }); */ //will be used if only have methods
+      //this.$store.commit('reducePrice'); //will be used if only have a mutation
+      this.$store.dispatch('reducePrice', amount)  //will be used if have mutation and action
+    }
   }
 }
 </script>
@@ -34,6 +44,10 @@ export default {
   margin-top: 60px;
 }
 
+.sale {
+  background-color: cadetblue;
+}
+
 .shadow {
     box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
     padding: 20px;
@@ -41,7 +55,11 @@ export default {
     background-color: brown;
     color: beige;
 }
-
+.btn-custom {
+  background-color: darkblue;
+  color: white;
+  padding: 20px;
+}
 h1, h2 {
   font-weight: normal;
 }

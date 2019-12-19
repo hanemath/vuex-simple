@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
+    strict: true,
     state: {
         favorites: [
             {name:'Laneige', vote: 24, price: 20}, 
@@ -19,8 +20,23 @@ export const store = new Vuex.Store({
                   name: '**'+favorite.name+'**',
                   price: favorite.price/2,
                 }
-              });
-              return saleProducts;
+            });
+            return saleProducts;
+        }
+    },
+    mutations: {
+        reducePrice: (state, payload) => {
+            state.favorites.forEach(favorite => {
+                //favorite.price -= 1; //if using a fix amount
+                favorite.price -= payload;
+            });
+        }
+    },
+    actions: {
+        reducePrice: (context, payload) => {
+            setTimeout(function(){
+                context.commit('reducePrice', payload)
+            }, 2000)
         }
     }
 })

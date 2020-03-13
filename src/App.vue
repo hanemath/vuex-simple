@@ -3,6 +3,7 @@
     <Navbar />
     <favorites-list-one></favorites-list-one>
     <favorites-list-two></favorites-list-two>
+    <Footer />
   </div>
 </template>
 
@@ -10,12 +11,14 @@
 import Navbar from './components/Navbar'
 import FavoritesListOne from './components/FavoritesListOne'
 import FavoritesListTwo from './components/FavoritesListTwo'
+import Footer from './components/Footer'
 
 export default {
   components: {
     Navbar,
     'favorites-list-one' : FavoritesListOne,
     'favorites-list-two' : FavoritesListTwo,
+    Footer,
   },
   name: 'app',
   data () {

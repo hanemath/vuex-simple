@@ -1,18 +1,19 @@
 <template>
   <div id="favorites-list-one" class="container-fluid sale">
-    <h2>SALE 50% OFF</h2>
+    <h2>SALE 50% +20% OFF*</h2>
     <div class="row justify-content-center">
       <div class="row col-12 justify-content-center">
-        <div class="card col-2 shadow" style="width: 18rem;" v-for="favorite in saleProducts" v-bind:key="favorite.name">
-          <img v-bind:src="favorite.image" class="card-img-top img-fluid" alt="Images"> 
+        <div class="card col-2 shadow" style="width: 18rem;" v-for="favorite in saleProducts" :key="favorite.name">
+          <img :src="favorite.image" class="card-img-top img-fluid" alt="Images"> 
           <div class="card-body">
-              <p class="card-text name">Brand : {{favorite.name}}</p> <br>
-              <p class="card-text vote">Price : {{favorite.price}}</p>
+              <p class="card-text name">{{favorite.name}}</p> <br>
+              <p class="card-text saleprice">Now Only IDR {{favorite.price}}K</p>
           </div>
         </div>
       </div>
-      <button class="btn btn-custom" v-on:click="reducePrice(6)">Reduce Price</button>
+      <button class="btn btn-custom" @click="reducePrice(6)">Do Something</button>
     </div>
+
   </div>
 </template>
 
@@ -28,6 +29,7 @@ export default {
       return this.$store.getters.saleProducts;
     }
   },
+  
   methods: {
     reducePrice: function(amount) {
       /*this.$store.state.favorites.forEach(favorite => {
@@ -42,6 +44,7 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Hind|Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Muli:500&display=swap');
 
 #favorites-list-one {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -49,21 +52,36 @@ export default {
 
 .sale {
   padding: 20px;
-  background-color: cadetblue;
+  background-color: #fff;
 }
 .sale h2 {
   font-family: 'Lilita One', cursive;
   font-size: 50px;
 }
-.card p {
+.card {
+  border: 0;
+}
+.card-img-top {
+  height: 18vw;
+  padding: 0;
+}
+.card .name {
+  font-family: 'Muli', sans-serif;
+  font-weight: 700;
+}
+.card .saleprice {
   font-family: 'Hind', sans-serif;
+  font-style: 
 }
 .shadow {
   box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
-  padding: 20px;
+  padding-top: 0;
+  padding-right: 0;
+  padding-left: 0;
+  padding-bottom: 0;
   margin: 20px;
-  background-color: brown;
-  color: beige;
+  background-color: #fff;
+  color: #000;
 }
 .btn-custom {
   background-color: rgb(41, 41, 54);

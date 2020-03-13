@@ -9,23 +9,29 @@ export const store = new Vuex.Store({
     strict: true,
     state: {
         favorites: [
-            {   name:'Laneige', 
-                vote: 24, 
-                price: 20, 
-                //image: image1,
-                //image: require('../assets/img/laneige.png')
+            {   name:'Laneige Water Sleeping Mask', brand: 'Laneige', vote: 24, price: 200, image: '/src/assets/img/laneige.jpg'
             }, 
-            {name:'Skin1004', vote: 22, price: 19},
-            {name:'Skinfood', vote: 20, price: 22},
-            {name:'Nacific', vote: 18, price: 28},
+            {   name:'Centella Asiatica Skin1004', brand: 'Skin1004', vote: 22, price: 190, image: '/src/assets/img/skin1004.jpg'
+            },
+            {   name:'Strawberry Mask Wash-Off Skinfood', brand: 'Skinfood', vote: 20, price: 220, image: '/src/assets/img/skinfood.jpg'
+            },
+            {   name:'Fresh Herb Nacific', brand: 'Nacific',  vote: 18, price: 280, image: '/src/assets/img/nacific.jpg'
+            },
+        ],
+        brands: [
+            { name: "Laneige", vote: 17, image: '/src/assets/img/laneige.png' },
+            { name: "Skin1004", vote: 15, image: '/src/assets/img/skin1004-brand.jpg' },
+            { name: "Skinfood", vote: 13, image: '/src/assets/img/skinfood.png' },
+            { name: "Nacific", vote: 11, image: '/src/assets/img/nacific.png' },
         ]
     },
     getters: {
         saleProducts: state => {
             var saleProducts = state.favorites.map( favorite => {
                 return {
-                  name: '**'+favorite.name+'**',
+                  name: favorite.name,
                   price: favorite.price/2,
+                  image: favorite.image
                 }
             });
             return saleProducts;
